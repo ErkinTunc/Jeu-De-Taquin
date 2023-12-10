@@ -2,6 +2,26 @@
 #include<stdlib.h>
 #include<time.h>
 
+
+
+// === Structure De Données ===
+
+//structure répresentante une case sur le plateu
+typedef struct{
+	int value;
+}Case; 	// Case(fr) <=> tile(ang) <=> kutu(tr)
+
+
+// Structure représentant le plateau de jeu
+typedef struct {
+    int size;  // Taille du côté du plateau (4 dans votre exemple)
+    Case **board;  // Tableau 2D de cases
+    int emptyRow;  // Ligne de la case vide
+    int emptyCol;  // Colonne de la case vide
+} GameBoard;
+
+
+
 // === Fonction Pour Tester ===
 
 void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a le taille moins que 100 pour bien fonctionment
