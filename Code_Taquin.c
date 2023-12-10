@@ -13,13 +13,16 @@ void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a
 	
 	int i=0,j=0;
 	for(i=0;i<ligne;i++){
-		for(j=0;j<collone;j++){
-				if (tab[i][j]<10){
-					printf("  %d ",tab[i][j]); // deux fois "space"
+		for(j=0;j<collone;j++){			
+				if (tab[i][j] == 0){ // '0' represante le case vide
+				printf("   X"); // trois fois "space"  // ici a place de 0 nous écrivons 'X'
+				}
+				else if (tab[i][j]<10){
+					printf("  %d ",tab[i][j]); // avant deux fois "space", apres une fois  
 				}
 				else{
-					printf(" %d ",tab[i][j]); // une fois "space"  
-			}
+					printf(" %d",tab[i][j]); // une fois "space"  
+				}		
 		}
 		printf("\n");
 	}
@@ -29,10 +32,10 @@ void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a
 
 // === Fonction De Jeu ===
 
-double ** CreationTab(int n){ //exemple n = 4
+int ** CreationTab(int n){ 
 	
 	// Creation de tableau (carre) avec le taille n 
-	int **tab = malloc(n*sizeof(int));
+	int **tab = malloc(n*sizeof(int*));
 	int i;
 	for(i=0;i<n;i++){
 		tab[i] = malloc(n*sizeof(int));
@@ -52,7 +55,7 @@ double ** CreationTab(int n){ //exemple n = 4
 		}
 	}
 	tab[n-1][n-1] = 0; // on mettre le denier case avec 0.
-					   // '0' reprensente le case vide dans le tableau	
+	// '0' reprensente le case vide dans le tableau	
 	
 	return tab;
 }
@@ -83,6 +86,13 @@ void ** Melange(double **tab){
 
 int main(){
 
+	// Le taille de tableau(carre)
+	int n = 4;
+
+	// Initialization de tab2k
+	int **tab = CreationTab(n);
+	AfficheTab2k(tab,n,n);
+	
 
 return 0;
 }
