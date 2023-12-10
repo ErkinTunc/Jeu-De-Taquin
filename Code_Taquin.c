@@ -14,11 +14,10 @@ void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a
 	int i=0,j=0;
 	for(i=0;i<ligne;i++){
 		for(j=0;j<collone;j++){
-			if (i+1 != collone){
 				if (tab[i][j]<10){
 					printf("  %d ",tab[i][j]); // deux fois "space"
 				}
-				else
+				else{
 					printf(" %d ",tab[i][j]); // une fois "space"  
 			}
 		}
