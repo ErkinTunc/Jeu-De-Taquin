@@ -197,7 +197,32 @@ void X_VersLeBas(GameBoard *T){
 }
 
 
-
+void mouve(char lettre, GameBoard *T){
+	
+	//Declaration de Pointeur de fonction
+	void (*fun_ptr)(GameBoard*);
+	
+	// Affectation de pointeur de fonction
+	if(lettre == 'g'){
+		fun_ptr = &X_gauche ;
+	}
+	else if(lettre == 'd'){
+		fun_ptr = &X_droite ;
+	}
+	else if(lettre == 'h'){
+		fun_ptr = &X_VersLeHaut ;
+	}
+	else if(lettre == 'b'){
+		fun_ptr = &X_VersLeBas ;
+	}
+	else{
+		printf("Probleme de lettre \n");
+		return ;
+	}
+	
+	// Utilisation de pointeur de fonction
+	fun_ptr(T);
+}
 
 
 // = Les fonction de Fichier = 
