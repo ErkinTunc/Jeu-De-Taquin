@@ -95,6 +95,7 @@ void ** Melange(double **tab){
 }
 */
 
+
 // = Les fonction des Mouvement =
 
 void X_gauche(GameBoard *T){
@@ -117,12 +118,89 @@ void X_gauche(GameBoard *T){
 		T->emptyCol = VideCol-1 ; // nouveau colonne
 	}
 	else{
-		printf("Pas d'espace pour bouger");
+		printf("Pas d'espace pour bouger \n");
+	}
+}
+
+
+void X_droite(GameBoard *T){
+	// Enchange des valeur de caseVide et le case a gauche de caseVide
+	
+	//Initialization de location de case vide
+	int VideLin = T->emptyLin ; // ligne de case vide
+	int VideCol = T->emptyCol ; // colonne de case vide
+	
+	// Si il n y'a pas une case a gauche de caseVide cette fonction fera rien
+	if(VideCol != (T->size -1) ){
+		
+		//Affectation sur le table
+		int valeur = T->board[VideLin][VideCol+1]; //on garde le case gauche de case vide
+		T->board[VideLin][VideCol+1] = T->board[VideLin][VideCol]; // Affectation de caseVide
+		T->board[VideLin][VideCol] = valeur ; // Affectation de l'autre case
+		
+		//Affectation de structure T
+		T->emptyLin = VideLin ; //nouveau ligne
+		T->emptyCol = VideCol+1 ; // nouveau colonne
+	}
+	else{
+		printf("Pas d'espace pour bouger \n");	
+	}
+}
+
+void X_VersLeHaut(GameBoard *T){
+	// Enchange des valeur de caseVide et le case a gauche de caseVide
+	
+	//Initialization de location de case vide
+	int VideLin = T->emptyLin ; // ligne de case vide
+	int VideCol = T->emptyCol ; // colonne de case vide
+	
+	// Si il n y'a pas une case a gauche de caseVide cette fonction fera rien
+	if(VideLin != 0 ){
+		
+		//Affectation sur le table
+		int valeur = T->board[VideLin -1][VideCol]; //on garde le case gauche de case vide
+		T->board[VideLin -1][VideCol] = T->board[VideLin][VideCol]; // Affectation de caseVide
+		T->board[VideLin][VideCol] = valeur ; // Affectation de l'autre case
+		
+		//Affectation de structure T
+		T->emptyLin = VideLin -1 ; //nouveau ligne
+		T->emptyCol = VideCol ; // nouveau colonne
+	}
+	else{
+		printf("Pas d'espace pour bouger \n");
+	}
+}
+
+
+void X_VersLeBas(GameBoard *T){
+	// Enchange des valeur de caseVide et le case a gauche de caseVide
+	
+	//Initialization de location de case vide
+	int VideLin = T->emptyLin ; // ligne de case vide
+	int VideCol = T->emptyCol ; // colonne de case vide
+	
+	// Si il n y'a pas une case a gauche de caseVide cette fonction fera rien
+	if(VideLin != (T->size -1) ){
+		
+		//Affectation sur le table
+		int valeur = T->board[VideLin +1][VideCol]; //on garde le case gauche de case vide
+		T->board[VideLin +1][VideCol] = T->board[VideLin][VideCol]; // Affectation de caseVide
+		T->board[VideLin][VideCol] = valeur ; // Affectation de l'autre case
+		
+		//Affectation de structure T
+		T->emptyLin = VideLin +1 ; //nouveau ligne
+		T->emptyCol = VideCol ; // nouveau colonne
+	}
+	else{
+		printf("Pas d'espace pour bouger \n");
 	}
 }
 
 
 
+
+
+// = Les fonction de Fichier = 
 
 void AffectFichier(GameBoard *table,const char *nomFichier){
 	// Il lire un fichier ensuite faire une affectation a la tableau
