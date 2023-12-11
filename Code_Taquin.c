@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-
+// Pour tout le fonction le numero 0 reperesente CaseVide
 
 // === Structure De Données ===
 
@@ -83,17 +83,42 @@ int ** CreationTab(int n){
 }
 
 /*
-void ** Melange(double **tab){
-	//Il melange le tab.  
-	//(le case vide est represante par 0)
-	
-	
-	
-	
-	
-	return;
+int getRandom(int min, int max) {
+    return min + rand() % (max - min + 1);
 }
 */
+
+void Melange(GameBoard *T){
+	//Il melange le tab.     //(le case vide est represante par 0)
+	
+	// Seed le générateur de nombres aléatoires avec l'heure actuelle
+	srand(time(NULL)); 	
+	
+	// Initialization des variables 
+	int Ncol ; // nouveau colonne
+	int Nlin ; // nouveau ligne
+	int taille = T->size ; // affectation de le taille de tableau
+	
+	// Algorithme de Shufle(melange)
+	for(int i=0;i<taille;i++){
+		for(int j=0;j<taille;j++){
+			
+			Ncol = rand() % taille ;
+			Nlin = rand() % taille ;
+			
+			int valeurGarde = T->board[Nlin][Ncol]; //stocker le valeur1
+			
+			if(T->board[i][j] == 0){ //le cas '0' est le caseVide
+					T->emptyLin = Nlin ;
+					T->emptyCol	= Ncol ;
+			}
+			
+			T->board[Nlin][Ncol] = T->board[i][j]; //Affectation de valeur2
+			T->board[i][j] = valeurGarde ;	 // Affectation de valeur1
+		}	
+	}
+}
+
 
 
 // = Les fonction des Mouvement =
@@ -124,7 +149,7 @@ void X_gauche(GameBoard *T){
 
 
 void X_droite(GameBoard *T){
-	// Enchange des valeur de caseVide et le case a gauche de caseVide
+	// Enchange des valeur de caseVide et le case a droite de caseVide
 	
 	//Initialization de location de case vide
 	int VideLin = T->emptyLin ; // ligne de case vide
@@ -148,7 +173,7 @@ void X_droite(GameBoard *T){
 }
 
 void X_VersLeHaut(GameBoard *T){
-	// Enchange des valeur de caseVide et le case a gauche de caseVide
+	// Enchange des valeur de caseVide et le case a l'haut de caseVide
 	
 	//Initialization de location de case vide
 	int VideLin = T->emptyLin ; // ligne de case vide
@@ -173,7 +198,7 @@ void X_VersLeHaut(GameBoard *T){
 
 
 void X_VersLeBas(GameBoard *T){
-	// Enchange des valeur de caseVide et le case a gauche de caseVide
+	// Enchange des valeur de caseVide et le case en bas de caseVide
 	
 	//Initialization de location de case vide
 	int VideLin = T->emptyLin ; // ligne de case vide
@@ -221,13 +246,13 @@ void mouve(char lettre, GameBoard *T){
 	}
 	
 	// Utilisation de pointeur de fonction
-	fun_ptr(T);
+	fun_ptr(T);  // Passe le pointeur vers GameBoard à la fonction
 }
 
 
 // = Les fonction de Fichier = 
 
-void AffectFichier(GameBoard *table,const char *nomFichier){
+void AffectFichier(GameBoard *T,const char *nomFichier){
 	// Il lire un fichier ensuite faire une affectation a la tableau
 	// une fonction qui prend de valeurs sur un fichier.
 	
@@ -244,11 +269,17 @@ void AffectFichier(GameBoard *table,const char *nomFichier){
     int lineNumber = 0;
     char line[100];  // la taille max de chaque ligne (cela peut etre modfier pour besoin) 
     
-	while ( fgets(line, sizeof(line), file) != NULL && lineNumber < table->size) {
+	while ( fgets(line, sizeof(line), file) != NULL && lineNumber < T->size) {
         
 		// Attributeur des valeurs d'une ligne à tableau
-        for (int j = 0; j < table->size; j++) {
-            sscanf(line, "%d", &table->board[lineNumber][j]); // il fait une scanf et une affectation a la table (en meme temps)
+        for (int j = 0; j < T->size; j++) {
+            sscanf(line, "%d", &T->board[lineNumber][j]); // il fait une scanf et une affectation a la T (en meme temps)
+			
+			// Affectation de location de caseVide
+			if(T->board[lineNumber][j] == 0){ //le cas '0' est le caseVide
+					T->emptyLin = lineNumber ;
+					T->emptyCol	= j ;
+			}
         }
         lineNumber++;
     }
@@ -268,11 +299,11 @@ void EcrireFichier(GameBoard *table,const char *nomFichier){
 
 int main(){
 
-	// Inıtıalization de structure table
+	// Initialization de structure table
 	GameBoard table ;
 	
 	// Le taille de tableau(carre)
-	int n = 4;
+	int n = 2;
 
 	// Les Affectation de table
 	table.size = n; // Affectation de taille
@@ -283,6 +314,7 @@ int main(){
 	// Affichage de table
 	AfficheTab2k(table.board,table.size,table.size);
 	
-
+	Melange(&table);
+	AfficheTab2k(table.board,table.size,table.size);
 return 0;
 }
