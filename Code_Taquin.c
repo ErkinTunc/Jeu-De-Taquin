@@ -7,16 +7,17 @@
 // === Structure De Données ===
 
 //structure répresentante une case sur le plateu
+/*
 typedef struct{
 	int value;
 }Case; 	// Case(fr) <=> tile(ang) <=> kutu(tr)
-
+*/
 
 // Structure représentant le plateau de jeu
 typedef struct {
     int size;  // Taille du côté du plateau (4 dans votre exemple)
-    Case **board;  // Tableau 2D de cases
-    int emptyRow;  // Ligne de la case vide
+    int **board;  // Tableau 2D de cases (pour chaque etape)
+    int emptyLin;  // Ligne de la case vide
     int emptyCol;  // Colonne de la case vide
 } GameBoard;
 
@@ -28,6 +29,7 @@ void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a
 	
 	// Test d'existence
 	if(tab == NULL){
+		 fprintf(stderr, "Error: The input array is NULL.\n");
 		return;
 	}
 	
@@ -83,16 +85,9 @@ int ** CreationTab(int n){
 /*
 void ** Melange(double **tab){
 	//Il melange le tab.  
-	//(le case vide est represante par -1)
+	//(le case vide est represante par 0)
 	
 	
-	int i=0;
-	for (i=0;i<4;i++){
-		int j=0;
-		for(j=0;j<4;j++){
-			
-		}
-	}
 	
 	
 	
@@ -100,18 +95,55 @@ void ** Melange(double **tab){
 }
 */
 
+void AffectFichier(GameBoard *table,const char *nomFichier){
+	// Il lire un fichier ensuite faire une affectation a la tableau
+	// une fonction qui prend de valeurs sur un fichier.
+	
+	// Initialization de fichier
+	FILE *file = fopen(fichier,"r");
+	
+	// Verification de fichier
+	if ( file == NULL){
+		perror("Probleme de fichier");
+		exit(-1);
+	}
+	
+	// Lisage de fichier
+    int lineNumber = 0;
+    char line[100];  // la taille max de chaque ligne (cela peut etre modfier pour besoin) 
+    
+	while ( fgets(line, sizeof(line), file) != NULL && lineNumber < table->size) {
+        
+		// Attributeur des valeurs d'une ligne à tableau
+        for (int j = 0; j < table->size; j++) {
+            sscanf(line, "%d", &table->board[lineNumber][j]); // il fait une scanf et une affectation a la table (en meme temps)
+        }
+        lineNumber++;
+    }
+	
+	fclose(A);
+}
 
-// ecrire une fonction qui prend de valeurs sur un fichier.
+
+
 
 
 int main(){
 
+	// Inıtıalization de structure table
+	GameBoard table ;
+	
 	// Le taille de tableau(carre)
 	int n = 4;
 
-	// Initialization de tab2k
-	int **tab = CreationTab(n);
-	AfficheTab2k(tab,n,n);
+	// Les Affectation de table
+	table.size = n; // Affectation de taille
+	table.board = CreationTab(n); //Affectation de Board
+	table.emptyLin = n-1 ; // Ligne
+	table.emptyCol = n-1 ; // Colonne
+	
+	// Affichage de table
+	AfficheTab2k(table.board,table.size,table.size);
 	
 
 return 0;
