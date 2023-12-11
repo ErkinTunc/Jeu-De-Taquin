@@ -95,12 +95,24 @@ void ** Melange(double **tab){
 }
 */
 
+// = Les fonction des Mouvement =
+
+void X_gauche(GameBoard *T){
+	
+	if(T->emptyCol != 0){
+		int valeur = T->board[emptyLin][emptyCol-1]; //on garde le case gauche de case vide
+		T->board[emptyLin][emptyCol] = T->board[emptyLin][emptyCol];
+	}
+}
+
+
+
 void AffectFichier(GameBoard *table,const char *nomFichier){
 	// Il lire un fichier ensuite faire une affectation a la tableau
 	// une fonction qui prend de valeurs sur un fichier.
 	
 	// Initialization de fichier
-	FILE *file = fopen(fichier,"r");
+	FILE *file = fopen(nomFichier,"r");
 	
 	// Verification de fichier
 	if ( file == NULL){
@@ -121,9 +133,15 @@ void AffectFichier(GameBoard *table,const char *nomFichier){
         lineNumber++;
     }
 	
-	fclose(A);
+	fclose(file);
 }
 
+
+void EcrireFichier(GameBoard *table,const char *nomFichier){
+	// cette fonction ecrire le contenu de table a la fichier. 
+	
+	
+}
 
 
 
