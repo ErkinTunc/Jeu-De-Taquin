@@ -98,12 +98,29 @@ void ** Melange(double **tab){
 // = Les fonction des Mouvement =
 
 void X_gauche(GameBoard *T){
+	// Enchange des valeur de caseVide et le case a gauche de caseVide
 	
-	if(T->emptyCol != 0){
-		int valeur = T->board[emptyLin][emptyCol-1]; //on garde le case gauche de case vide
-		T->board[emptyLin][emptyCol] = T->board[emptyLin][emptyCol];
+	//Initialization de location de case vide
+	int VideLin = T->emptyLin ; // ligne de case vide
+	int VideCol = T->emptyCol ; // colonne de case vide
+	
+	// Si il n y'a pas une case a gauche de caseVide cette fonction fera rien
+	if(VideCol != 0){
+		
+		//Affectation sur le table
+		int valeur = T->board[VideLin][VideCol-1]; //on garde le case gauche de case vide
+		T->board[VideLin][VideCol-1] = T->board[VideLin][VideCol]; // Affectation de caseVide
+		T->board[VideLin][VideCol] = valeur ; // Affectation de l'autre case
+		
+		//Affectation de structure T
+		T->emptyLin = VideLin ; //nouveau ligne
+		T->emptyCol = VideCol-1 ; // nouveau colonne
+	}
+	else{
+		printf("Pas d'espace pour bouger");
 	}
 }
+
 
 
 
@@ -115,7 +132,7 @@ void AffectFichier(GameBoard *table,const char *nomFichier){
 	FILE *file = fopen(nomFichier,"r");
 	
 	// Verification de fichier
-	if ( file == NULL){
+	if (file == NULL){
 		perror("Probleme de fichier");
 		exit(-1);
 	}
