@@ -1,5 +1,6 @@
 CC=gcc
-CFLAGS=-c -Wall -I "Jeu-De-Taquin/src/include/SDL2" 
+SDL2_INCLUDE_PATH=Jeu-De-Taquin/src/include/SDL2
+CFLAGS=-c -Wall -I$(SDL2_INCLUDE_PATH)
 LDFLAGS=-LJeu-De-Taquin/src/lib -lmingw32 -lSDL2main -lSDL2
 SOURCES=Jeu-De-Taquin/main.c
 OBJECTS=$(SOURCES:.c=.o)
