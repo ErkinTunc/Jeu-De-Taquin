@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "Code_Taquin.c"
-#include <src/include/SDL2/SDL.h>
+#include "src/include/SDL2/SDL.h"
 
 const int WIDTH = 800, HEIGHT = 600;
 
