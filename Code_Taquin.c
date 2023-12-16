@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include "Code_Taquin.h"
 
 // Pour tout le fonction le numero 0 reperesente CaseVide
 
@@ -14,12 +15,12 @@ typedef struct{
 */
 
 // Structure représentant le plateau de jeu
-typedef struct {
+/*typedef struct {
     int size;  // Taille du côté du plateau (4 dans votre exemple)
     int **board;  // Tableau 2D de cases (pour chaque etape)
     int emptyLin;  // Ligne de la case vide
     int emptyCol;  // Colonne de la case vide
-} GameBoard;
+} GameBoard;*/
 
 
 
@@ -57,10 +58,10 @@ void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a
 int ** CreationTab(int n){ 
 	
 	// Creation de tableau (carre) avec le taille n 
-	int **tab = malloc(n*sizeof(int*));
+	int **tab = (int **)malloc(n*sizeof(int*));
 	int i;
 	for(i=0;i<n;i++){
-		tab[i] = malloc(n*sizeof(int));
+		tab[i] = (int *)malloc(n*sizeof(int));
 	}
 	
 	
@@ -297,24 +298,3 @@ void EcrireFichier(GameBoard *table,const char *nomFichier){
 
 
 
-int main(){
-
-	// Initialization de structure table
-	GameBoard table ;
-	
-	// Le taille de tableau(carre)
-	int n = 2;
-
-	// Les Affectation de table
-	table.size = n; // Affectation de taille
-	table.board = CreationTab(n); //Affectation de Board
-	table.emptyLin = n-1 ; // Ligne
-	table.emptyCol = n-1 ; // Colonne
-	
-	// Affichage de table
-	AfficheTab2k(table.board,table.size,table.size);
-	
-	Melange(&table);
-	AfficheTab2k(table.board,table.size,table.size);
-return 0;
-}
