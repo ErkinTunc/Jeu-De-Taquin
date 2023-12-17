@@ -1,19 +1,16 @@
 CC=gcc
-CFLAGS=-c -Wall -I "Jeu-De-Taquin/src/include/SDL2"
-LDFLAGS=-L "Jeu-De-Taquin/src/lib" -lmingw32 -lSDL2main -lSDL2
-SOURCES= main.c Code_Taquin.c
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=JeuDeTaquin
+FLAGS= -Wall
+OBJECTS= Code_Taquin.o main.o
+TARGET=Jeu_de_Taquin
 
-.PHONY : all clean
+all: $(TARGET)
 
-all: $(SOURCES) $(EXECUTABLE)
+$(TARGET): $(OBJECTS)
+	$(CC) $(FLAGS) -o $@ $(OBJECTS)
 
-$(EXECUTABLE): $(OBJECTS)
-    $(CC) $(OBJECTS) -o $@ $(LDFLAGS)
+Code_Taquin.o: Code_Taquin.c Code_taquin.h
+	$(CC) $(FLAGS) -c $<
 
-*.o: *.c
-    $(CC) $(CFLAGS) $< -o $@
+main.o: main.c Code_taquin.h
+	$(CC) $(FLAGS) -c $<
 
-clean :
-    rm -f $(OBJECTS) $(EXECUTABLE)
