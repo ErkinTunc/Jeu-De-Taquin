@@ -289,11 +289,29 @@ void AffectFichier(GameBoard *T,const char *nomFichier){
 }
 
 
-void EcrireFichier(GameBoard *table,const char *nomFichier){
+void EcrireFichier(GameBoard *T,const char *nomFichier){
 	// cette fonction ecrire le contenu de table a la fichier. 
 	
-	
-}
+	// Ouverture de fichier
+    FILE *file = fopen(nomFichier, "w+");
+
+    // Verification de d'existance
+    if (file == NULL) {
+        perror("Probleme d'ouverture du fichier");
+        exit(-1);
+    }
+
+    // Ecriture de GameBoard sur le fichier
+    for (int i = 0; i < T->size; i++) {
+        for (int j = 0; j < T->size; j++) {
+            fprintf(file, "%d ", T->board[i][j]); // il y a une espace apres chaque nombre
+        }
+        fprintf(file, "\n");
+    }
+
+    fclose(file);
+}	
+
 
 
 
