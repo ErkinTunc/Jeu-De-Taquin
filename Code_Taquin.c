@@ -223,16 +223,16 @@ void mouve(char lettre, GameBoard *T){
 	void (*fun_ptr)(GameBoard*);
 	
 	// Affectation de pointeur de fonction
-	if(lettre == 'g'){
+	if(lettre == 'g' || lettre == 'G'){
 		fun_ptr = &X_gauche ;
 	}
-	else if(lettre == 'd'){
+	else if(lettre == 'd' || lettre == 'D'){
 		fun_ptr = &X_droite ;
 	}
-	else if(lettre == 'h'){
+	else if(lettre == 'h' || lettre == 'H'){
 		fun_ptr = &X_VersLeHaut ;
 	}
-	else if(lettre == 'b'){
+	else if(lettre == 'b' || lettre == 'B'){
 		fun_ptr = &X_VersLeBas ;
 	}
 	else{
