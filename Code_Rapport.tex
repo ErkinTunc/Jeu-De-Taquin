@@ -27,6 +27,12 @@ maniére horizontale ou verticale.
 
 %Peut-etre on peut ajouter des images pour montrer le logique de jeu (comme le fichier de projet)
 
+\section{Localisation}
+Dans ce projet il y a 3 fichier qui contiennent de codes
+//
+\begin{itamize}
+
+
 \section{Structure De Données}
 
 \subsection{GameBoard}
@@ -43,6 +49,8 @@ Cette fonction crée le premier table de jeu qui est comme ci-dessous.
 Cette fonction nous permet de continuer un jeu nous avons sauvgardé. Grace a lisage d'un fichier
 
 \subsection{EcrireFichier}
+Cette fonction nous permet de ecrire le contenu de tableau(jeu) a la fichier donc il nous permet de saugarder.
+Mais cette fonction n'est pas dans le code car ce n'est pas preferé utilisation par nos developpeurs.
 
 \subsection{mouve}
 Dans cette fonction nous avons utiliser \textit{pointeurs de fonction}. Pour cela on a crée 4 fonction.	
@@ -58,14 +66,20 @@ Cette quatre fonctions nous permétont de changer le location de case vide(qui e
 	
 
 \subsection{Melange}
+Cette fonction nous permet de melange un tableau par hazard.
 
 \section{Fonction Pour Tester}
 
 \subsection{AfficheTab2k}
+Cette fonction affiche le tableau 2 dimension avec un bon representation. Enplus, il affiche 'X' a place de numero 0 qui represente le case vide dans le jeu.
 
+\subsection{clearScreen}
+Cette fonction efface les ecritures sur le terminal pour Linux et Windows systeme d'operations
 
-
-\section{Interface Graphique SDL}
+\section{Interface Graphique}
+Pour l'interface le jeu utilise le terminal. Il affiche ces ecritures sur le terminal et efface avec le fonction clearScreen().
+//
+Le menu de jeu contient 3 partie...
 
 \section{Makefile}
 
