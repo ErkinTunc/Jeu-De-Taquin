@@ -53,13 +53,10 @@ int main(){
         
         printf("Faitez vous votre choix (1 ou 2 ou 3 ou 4) :");
         int choix_menu ; 
-        scanf("% d",&choix_menu);
-
-        // Executable
-        while (choix_menu != 4){
+        scanf("%d",&choix_menu);
             
-            // Le partie Jeu
-            if(choix_menu == 1){
+        // Le partie Jeu
+        if(choix_menu == 1){
                 
 				// Variable de melange
 				int nouveauJeu = 1 ; 
@@ -67,7 +64,7 @@ int main(){
 				
                 // Boucle de mouvement
                 char choix_mouvement = 'A' ; // la lettre A n'a pas un effect sur le code
-                while(choix_mouvement != 'Q' ){
+                while(choix_mouvement != 'Q' || choix_mouvement != 'q'){
                 
                     // Efface de terminale
                     clearScreen(os);
@@ -87,17 +84,17 @@ int main(){
                         "Votre choix : " );
                     
                     char lettre ; // choix lettre
-                    scanf(" %c",&lettre);
+                    scanf("%c",&lettre);
 					
 					// Consume the newline character
 					getchar();
 
                     // Retourne a la menu
-                    if(lettre == 'Q'){
+                    if(lettre == 'Q' || choix_mouvement != 'q'){
                         choix_mouvement = lettre ;
 						choix_menu = 0 ;
                     }
-                    else if(lettre == 'G' || lettre == 'D' || lettre == 'H' || lettre == 'B'){
+                    else if(lettre == 'G' || lettre == 'D' || lettre == 'H' || lettre == 'B' lettre == 'g' || lettre == 'd' || lettre == 'h' || lettre == 'b'){
                     mouve(lettre,&T);
                     }
 
@@ -105,15 +102,15 @@ int main(){
                 }
 
             }
-            // Le jeu sauvegardées
-            else if(choix_menu == 2){
+        // Le jeu sauvegardées
+        else if(choix_menu == 2){
                 
                 // Efface de terminale
                 clearScreen(os);
 
                 // Boucle de choix difficulte
                 char choixDifficulte = 'A'; // la lettre A n'a pas un effect sur le code
-                while (choixDifficulte != 'Q'){
+                while (choixDifficulte != 'Q' || choixDifficulte != 'q'){
 
                     printf("Choissiez vous un jeu sauvegarder \n"
                         "1.Facile(par hazard) (4x4)    \n"
@@ -126,12 +123,11 @@ int main(){
                     scanf("%c",&choixDifficulte);
 					
 					// Retourne a la menu
-					if(choixDifficulte == 'Q'){
+					if(choixDifficulte == 'Q' || choixDifficulte != 'q'){
 						choix_menu = 0 ; // Le plus grand boucle apres le boucle de jeu
 					}
-
 					// Affectation
-                    if (choixDifficulte == '1'){
+                    else if(choixDifficulte == '1'){
 						
                         T.size = 4 ;
                         AffectFichier(&T,"facile.txt"); // nom de fichier est "facile"
@@ -169,13 +165,10 @@ int main(){
 						// Condition de melange de tableau dans le partie jeu
 						jeuSauvegarde = 1;
                     }
-					
-					
                 }
-                
             }
-            // Les options
-            else if(choix_menu == 3){
+        // Les options
+        else if(choix_menu == 3){
                 
                 // Efface de terminale
                 clearScreen(os);
@@ -196,18 +189,17 @@ int main(){
 					T.board = CreationTab(T.size);
 					T.emptyLin = T.size - 1;
 					T.emptyCol = T.size - 1;
-				} else if (choix_taille == 'Q') {
+				} else if (choix_taille == 'Q' || choix_taille == 'q') {
 					// Modification de variable de boucle
 					choix_menu = 0; // Plus grand boucle (après le boucle de jeu)
 				}
                 
             }
-            // Quitter le programme
-            else if(choix_menu == 4){
+        // Quitter le programme
+        else if(choix_menu == 4){
                 var = 0;
                 exit(0);
             }
-        }
     }
     
 return 0 ;
