@@ -28,14 +28,37 @@ maniére horizontale ou verticale.
 %Peut-etre on peut ajouter des images pour montrer le logique de jeu (comme le fichier de projet)
 
 \section{Localisation}
-Dans ce projet il y a 3 fichier qui contiennent de codes
-//
-\begin{itamize}
+Dans ce projet il y a 3 fichier qui contiennent de codes de jeu et une Makefile.
+\\
+\begin{itemize}
+	\item Code\_Taquin.c
+	\item Code\_Taquin.h
+	\item main.c  \\
+	\item Makefile \\
+\end{itemize}
+
+
+Le fichier Taquin.c contient le code des fonctions.
+\\
+
+Le fichier Taquin.h contient le structure de jeu et les nom de fonction(pour les appeller).\\
+
+Le fichier main.c contient le code de menu(interface graphique). Dans cette fichier on utilise les codes d'autre fichier.
 
 
 \section{Structure De Données}
 
 \subsection{GameBoard}
+Tous le jeu est contruit sur cette structure.
+\\
+Dans cette structure il y a : \\
+
+\begin{itemize}
+	\item size (taille de tableau)
+	\item board (le pointeur qui pointe le tableau 2 dim.)
+	\item emptyLin (le location de colonne de case vide)
+	\item empyCol (le location de colonne de case vide)
+\end{itemize}
 
 
 \section{Les Fonctions De Jeu}
@@ -46,7 +69,7 @@ Cette fonction crée le premier table de jeu qui est comme ci-dessous.
 %ici ajoute une matrice  4x4 qui a le nombre croissante 
 
 \subsection{AffectFichier}
-Cette fonction nous permet de continuer un jeu nous avons sauvgardé. Grace a lisage d'un fichier
+Cette fonction nous permet de continuer un jeu qui est deja sauvgardé sur le fichier. Grace a lisage d'un fichier.
 
 \subsection{EcrireFichier}
 Cette fonction nous permet de ecrire le contenu de tableau(jeu) a la fichier donc il nous permet de saugarder.
@@ -68,7 +91,7 @@ Cette quatre fonctions nous permétont de changer le location de case vide(qui e
 \subsection{Melange}
 Cette fonction nous permet de melange un tableau par hazard.
 
-\section{Fonction Pour Tester}
+\section{Fonction Pour Affichage et Pour Tester}
 
 \subsection{AfficheTab2k}
 Cette fonction affiche le tableau 2 dimension avec un bon representation. Enplus, il affiche 'X' a place de numero 0 qui represente le case vide dans le jeu.
@@ -77,9 +100,41 @@ Cette fonction affiche le tableau 2 dimension avec un bon representation. Enplus
 Cette fonction efface les ecritures sur le terminal pour Linux et Windows systeme d'operations
 
 \section{Interface Graphique}
-Pour l'interface le jeu utilise le terminal. Il affiche ces ecritures sur le terminal et efface avec le fonction clearScreen().
-//
-Le menu de jeu contient 3 partie...
+Pour l'interface le jeu utilise le terminal. Il affiche ces ecritures sur le terminal et efface avec le fonction clearScreen(). Enplus le jeu utiliser touses des fonctions (sauf EcrireFichier).
+\\
+Le menu de jeu contient 3 partie :
+
+\subsection{Partie I : Jouer}
+En partie I le joueur joue le jeu grace aux boucles et des fonction qui sont 
+
+\begin{itemize}
+	\item clearScreen()
+	\item AfficheTab2k()
+	\item mouve()
+\end{itemize}
+
+
+\subsection{Partie II : jouer a une partie sauvegardee}
+En partie II le joueur peut choissir le difficulte.
+Il y a 3 choix "facille,moyenne,difficile".
+Chaque choix represante une fichier dans le docier.
+Grace a focntion AffectFichier(). Leu jeu peut affecter les valeurs de fichier sur notre structure.
+Enplus le fonction clearScrean() est utilisé.
+\\ \\
+Les équivalents fichier des choix sont ci-dessous : 
+
+\begin{itemize}
+	\item facile $\leftrightarrow$ facile.txt
+	\item moyenne $\leftrightarrow$ moyenne.txt
+	\item difficile $\leftrightarrow$ difficile.txt
+\end{itemize}
+
+
+\subsection{Partie III : Les options}
+En partie III le joueur peut choisir le taille de tableau. L'interface lui permet de choissir le taille 4 , 5 et 6.
+
+\subsection{Partie IV : Quitter}
+Dans cette partie le joueur peut quitter le jeu grace a un button choissi
 
 \section{Makefile}
 
