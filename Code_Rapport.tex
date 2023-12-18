@@ -4,6 +4,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage{listings}
+\usepackage{hyperref}
 
 \title{L2 INFORMATIQUE – PROGRAMMATION AVANCEE \\ PROJET : JEU DE TAQUIN}
 \author{Erkin Tunç Boya}
@@ -60,13 +62,23 @@ Dans cette structure il y a : \\
 	\item empyCol (le location de colonne de case vide)
 \end{itemize}
 
+\newpage
 
 \section{Les Fonctions De Jeu}
 
 \subsection{CreationTab}
-Cette fonction crée le premier table de jeu qui est comme ci-dessous.
+Cette fonction crée le premier table de jeu qui est comme ci-dessous.(Nous supposons que taille est 4) \\
 
-%ici ajoute une matrice  4x4 qui a le nombre croissante 
+\begin{center}
+	T =
+	\begin{tabular}{|c|c|c|c|} \hline
+	 1 & 2 & 3 & 4 \\  \hline
+	 5 & 6 & 7 & 8 \\  \hline
+	 9 & 10 & 11 & 12 \\ \hline
+	13 & 14 & 15 & 0 \\ \hline
+	\end{tabular}
+\end{center}
+ 
 
 \subsection{AffectFichier}
 Cette fonction nous permet de continuer un jeu qui est deja sauvgardé sur le fichier. Grace a lisage d'un fichier.
@@ -89,7 +101,9 @@ Cette quatre fonctions nous permétont de changer le location de case vide(qui e
 	
 
 \subsection{Melange}
-Cette fonction nous permet de melange un tableau par hazard.
+Cette fonction nous permet de melange un tableau par hazard. Il utilise pointeur de structure pour premier argumant et il modifie le location de case vide aussi.
+
+\newpage
 
 \section{Fonction Pour Affichage et Pour Tester}
 
@@ -102,7 +116,7 @@ Cette fonction efface les ecritures sur le terminal pour Linux et Windows system
 \section{Interface Graphique}
 Pour l'interface le jeu utilise le terminal. Il affiche ces ecritures sur le terminal et efface avec le fonction clearScreen(). Enplus le jeu utiliser touses des fonctions (sauf EcrireFichier).
 \\
-Le menu de jeu contient 3 partie :
+Le menu de jeu contient 4 partie :
 
 \subsection{Partie I : Jouer}
 En partie I le joueur joue le jeu grace aux boucles et des fonction qui sont 
@@ -116,7 +130,7 @@ En partie I le joueur joue le jeu grace aux boucles et des fonction qui sont
 
 \subsection{Partie II : jouer a une partie sauvegardee}
 En partie II le joueur peut choissir le difficulte.
-Il y a 3 choix "facille,moyenne,difficile".
+Il y a 3 choix "facille, moyenne, difficile".
 Chaque choix represante une fichier dans le docier.
 Grace a focntion AffectFichier(). Leu jeu peut affecter les valeurs de fichier sur notre structure.
 Enplus le fonction clearScrean() est utilisé.
@@ -137,5 +151,27 @@ En partie III le joueur peut choisir le taille de tableau. L'interface lui perme
 Dans cette partie le joueur peut quitter le jeu grace a un button choissi
 
 \section{Makefile}
+Le code de makefile comme ci\-dessous nous permet de créer l'executable(Jeu\_de\_Taquin) de notre projet.
+TARGET represente le nom d'executable.
+\begin{lstlisting}
+CC=gcc
+FLAGS= -Wall
+OBJECTS= Code_Taquin.o main.o
+TARGET=Jeu_de_Taquin
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(FLAGS) -o $@ $(OBJECTS)
+
+Code_Taquin.o: Code_Taquin.c Code_taquin.h
+	$(CC) $(FLAGS) -c $<
+
+main.o: main.c Code_taquin.h
+	$(CC) $(FLAGS) -c $<
+\end{lstlisting}
+
+\section{Notes du Developeur}
+Le Depot Git : \url{https://github.com/ErkinTunc/Jeu-De-Taquin} \\
 
 \end{document}
