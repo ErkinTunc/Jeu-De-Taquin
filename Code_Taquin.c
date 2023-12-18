@@ -5,26 +5,8 @@
 
 // Pour tout le fonction le numero 0 reperesente CaseVide
 
-// === Structure De Données ===
 
-//structure répresentante une case sur le plateu
-/*
-typedef struct{
-	int value;
-}Case; 	// Case(fr) <=> tile(ang) <=> kutu(tr)
-*/
-
-// Structure représentant le plateau de jeu
-/*typedef struct {
-    int size;  // Taille du côté du plateau (4 dans votre exemple)
-    int **board;  // Tableau 2D de cases (pour chaque etape)
-    int emptyLin;  // Ligne de la case vide
-    int emptyCol;  // Colonne de la case vide
-} GameBoard;*/
-
-
-
-// === Fonction Pour Tester ===
+// === Fonction Pour Tester Et Affichage ===
 
 void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a le taille moins que 100 pour bien fonctionment
 	
@@ -50,6 +32,18 @@ void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a
 		printf("\n");
 	}
 	printf("\n");
+}
+
+
+void clearScreen(int os) { //operation systems
+    // Il efface le terminal
+	
+	if (os == 0){ 
+	system("clear"); // For Unix/Linux
+	}
+	else if(os == 1){
+     system("cls"); // For Windows
+	}
 }
 
 
@@ -311,7 +305,6 @@ void EcrireFichier(GameBoard *T,const char *nomFichier){
 
     fclose(file);
 }	
-
 
 
 

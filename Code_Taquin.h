@@ -1,3 +1,5 @@
+
+
 typedef struct {
     int size;  // Taille du côté du plateau (4 dans votre exemple)
     int **board;  // Tableau 2D de cases (pour chaque etape)
@@ -7,6 +9,8 @@ typedef struct {
 
 
 void AfficheTab2k(int ** tab,int ligne,int collone);
+
+void clearScreen(int os);
 
 int ** CreationTab(int n);
 
