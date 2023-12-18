@@ -9,6 +9,7 @@
 // === Fonction Pour Tester Et Affichage ===
 
 void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a le taille moins que 100 pour bien fonctionment
+	printf("\n");
 	
 	// Test d'existence
 	if(tab == NULL){
@@ -19,18 +20,56 @@ void AfficheTab2k(int ** tab,int ligne,int collone){ // utiliser les table qui a
 	int i=0,j=0;
 	for(i=0;i<ligne;i++){
 		for(j=0;j<collone;j++){			
+				
+				if (j == 0){
+					printf("   "); //avant le tableau il y a 3 space
+					
+					printf("+");
+					for(int a=1;a<collone;a++){
+						printf("----+");
+					}
+					printf("----+\n");
+				}
+				
 				if (tab[i][j] == 0){ // '0' represante le case vide
-				printf("   X"); // trois fois "space"  // ici a place de 0 nous écrivons 'X'
+					if(j == 0){
+						printf("   "); //avant le tableau il y a 3 space
+					}
+					printf("|  X "); 
+					if(j == collone-1){
+						printf("|");
+					}
 				}
 				else if (tab[i][j]<10){
-					printf("  %d ",tab[i][j]); // avant deux fois "space", apres une fois  
+					if(j == 0){
+						printf("   "); //avant le tableau il y a 3 space
+					}
+					
+					printf("|  %d ",tab[i][j]);   
+					if(j == collone-1){
+						printf("|");
+					}
 				}
 				else{
-					printf(" %d",tab[i][j]); // une fois "space"  
-				}		
+					if(j == 0){
+						printf("   "); //avant le tableau il y a 3 space
+					}
+					printf("| %d ",tab[i][j]); // une fois "space"  
+					if(j == collone-1){
+						printf("|");
+					}	
+				}
+	
 		}
 		printf("\n");
 	}
+	printf("   "); //avant le tableau il y a 3 space
+					
+	printf("+");
+	for(int a=1;a<collone;a++){
+		printf("----+");
+	}
+	printf("----+\n");
 	printf("\n");
 }
 
@@ -103,9 +142,15 @@ void Melange(GameBoard *T){
 			
 			int valeurGarde = T->board[Nlin][Ncol]; //stocker le valeur1
 			
-			if(T->board[i][j] == 0){ //le cas '0' est le caseVide
-					T->emptyLin = Nlin ;
-					T->emptyCol	= Ncol ;
+			if(T->board[i][j] == 0 ){ //le cas '0' est le caseVide
+				// Modifie le location(structure) de case vide
+				T->emptyLin = Nlin ;
+				T->emptyCol	= Ncol ;
+			}
+			else if(T->board[Nlin][Ncol] == 0){
+				// Modifie le location(structure) de case vide
+				T->emptyLin = i ;
+				T->emptyCol	= j ;	
 			}
 			
 			T->board[Nlin][Ncol] = T->board[i][j]; //Affectation de valeur2
@@ -139,6 +184,7 @@ void X_gauche(GameBoard *T){
 	}
 	else{
 		printf("Pas d'espace pour bouger \n");
+		
 	}
 }
 
@@ -164,6 +210,7 @@ void X_droite(GameBoard *T){
 	}
 	else{
 		printf("Pas d'espace pour bouger \n");	
+		
 	}
 }
 
@@ -305,7 +352,5 @@ void EcrireFichier(GameBoard *T,const char *nomFichier){
 
     fclose(file);
 }	
-
-
 
 
