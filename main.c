@@ -140,6 +140,8 @@ int main(void){
 						
                         T.size = 4 ;
                         AffectFichier(&T,"facile"); // nom de fichier est "facile"
+						T.emptyLin = T.size -1 ;
+						T.emptyCol = T.size -1 ;
                         Melange(&T);  // on melange ici car dans le fichier les nombres sont ordonne
 						
 						//Modification de variable de boucle
