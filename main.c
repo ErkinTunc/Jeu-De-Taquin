@@ -2,14 +2,21 @@
 #include<stdlib.h>
 #include "Code_Taquin.h"
 
+// Ajout de bibliotheque pour fonction sleep()
+#ifdef _WIN32
+	#include <unistd.h> 
+#elif __linux__
+	#include<unistd.h> 
+#endif //si system n'est pas Linux ou Windows le fonction sleep va creer de problems
+
 // Variable Global
 int os ; // os => operating systems
 
-int main(){
+int main(void){
 	
 	// Verification de System d'operation
 	#ifdef _WIN32
-    os = 1; // Windows
+		os = 1; // Windows
 	#elif __linux__
 		os = 0; // Linux
 	#else
@@ -23,6 +30,7 @@ int main(){
 
     // Affichage de Salutation
     printf("Bonjour a la jeu de Taquin \n");
+	sleep(2);
 
     // Les Variables 
     int taille_tableau = 4; 
@@ -47,13 +55,13 @@ int main(){
         printf("Le Menu \n");
 
         printf("1. Jouer \n"
-               "2. Jouer le jeu sauvegarder \n"
+               "2. jouer a une partie sauvegardee \n"
                "3. Les options \n"
                "4. Quitter \n");
         
         printf("Faitez vous votre choix (1 ou 2 ou 3 ou 4) :");
-        int choix_menu ; 
-        scanf("%d",&choix_menu);
+        int choix_menu = 0 ; 
+        scanf(" %d",&choix_menu);
             
         // Le partie Jeu
         if(choix_menu == 1){
@@ -64,7 +72,7 @@ int main(){
 				
                 // Boucle de mouvement
                 char choix_mouvement = 'A' ; // la lettre A n'a pas un effect sur le code
-                while(choix_mouvement != 'Q' || choix_mouvement != 'q'){
+                while(choix_mouvement != 'Q'){
                 
                     // Efface de terminale
                     clearScreen(os);
@@ -84,17 +92,17 @@ int main(){
                         "Votre choix : " );
                     
                     char lettre ; // choix lettre
-                    scanf("%c",&lettre);
+                    scanf(" %c",&lettre);
 					
 					// Consume the newline character
 					getchar();
 
                     // Retourne a la menu
-                    if(lettre == 'Q' || choix_mouvement != 'q'){
-                        choix_mouvement = lettre ;
+                    if(lettre == 'Q' || lettre == 'q'){
+                        choix_mouvement = 'Q' ;
 						choix_menu = 0 ;
                     }
-                    else if(lettre == 'G' || lettre == 'D' || lettre == 'H' || lettre == 'B' lettre == 'g' || lettre == 'd' || lettre == 'h' || lettre == 'b'){
+                    else if(lettre == 'G' || lettre == 'D' || lettre == 'H' || lettre == 'B' || lettre == 'g' || lettre == 'd' || lettre == 'h' || lettre == 'b'){
                     mouve(lettre,&T);
                     }
 
@@ -105,13 +113,13 @@ int main(){
         // Le jeu sauvegardées
         else if(choix_menu == 2){
                 
-                // Efface de terminale
-                clearScreen(os);
-
                 // Boucle de choix difficulte
                 char choixDifficulte = 'A'; // la lettre A n'a pas un effect sur le code
-                while (choixDifficulte != 'Q' || choixDifficulte != 'q'){
-
+                while (choixDifficulte != 'Q'){
+					
+					// Efface de terminale
+					clearScreen(os);
+					
                     printf("Choissiez vous un jeu sauvegarder \n"
                         "1.Facile(par hazard) (4x4)    \n"
                         "2.Moyenne (5x5)   \n"
@@ -123,14 +131,15 @@ int main(){
                     scanf("%c",&choixDifficulte);
 					
 					// Retourne a la menu
-					if(choixDifficulte == 'Q' || choixDifficulte != 'q'){
+					if(choixDifficulte == 'Q' || choixDifficulte == 'q'){
+						choixDifficulte = 'Q';
 						choix_menu = 0 ; // Le plus grand boucle apres le boucle de jeu
 					}
 					// Affectation
                     else if(choixDifficulte == '1'){
 						
                         T.size = 4 ;
-                        AffectFichier(&T,"facile.txt"); // nom de fichier est "facile"
+                        AffectFichier(&T,"facile"); // nom de fichier est "facile"
                         Melange(&T);  // on melange ici car dans le fichier les nombres sont ordonne
 						
 						//Modification de variable de boucle
@@ -170,30 +179,37 @@ int main(){
         // Les options
         else if(choix_menu == 3){
                 
-                // Efface de terminale
-                clearScreen(os);
+				// Boucle de choix de taille
+				char choix_taille = 'A';
+                while(choix_taille != 'Q'){
+				
+					// Efface de terminale
+					clearScreen(os);
 
-                // Affichage d'ecriture et le choix
-                printf("Le taille de tableau est %d \n",T.size);
-                printf("Le jeu peut commoncer avec un tableau 4x4 ou 5x5 ou 6x6 \n"
-                       "Tapez 4 ou 5 ou 6 pour ces tailles \n"
-					   "Ou tapez Q pour le menu \n"
-                       "votre choix :");
+					// Affichage d'ecriture et le choix
+					printf("Le taille de tableau est %d \n",T.size);
+					printf("Le jeu peut commoncer avec un tableau 4x4 ou 5x5 ou 6x6 \n"
+						   "Tapez 4 ou 5 ou 6 pour ces tailles \n"
+						   "Ou tapez Q pour le menu \n"
+						   "votre choix :");
 
-                char choix_taille;
-                scanf("%c",&choix_taille);
+					
+					scanf("%c",&choix_taille);
 
-                // Changement du taille de la tableau
-				if (choix_taille == '4' || choix_taille == '5' || choix_taille == '6') {
-					T.size = choix_taille - '0';  // Convertir char en int en utilisant les valeurs ASCII
-					T.board = CreationTab(T.size);
-					T.emptyLin = T.size - 1;
-					T.emptyCol = T.size - 1;
-				} else if (choix_taille == 'Q' || choix_taille == 'q') {
 					// Modification de variable de boucle
-					choix_menu = 0; // Plus grand boucle (après le boucle de jeu)
-				}
-                
+					if(choix_taille == 'Q' ){
+						choix_taille == 'Q' ;
+						choix_menu = 0; // Plus grand boucle (après le boucle de jeu)
+					}
+					// Changement du taille de la tableau
+					else if (choix_taille == '4' || choix_taille == '5' || choix_taille == '6'){
+						T.size = choix_taille - '0';  // Convertir char en int en utilisant les valeurs ASCII
+						T.board = CreationTab(T.size);
+						T.emptyLin = T.size - 1;
+						T.emptyCol = T.size - 1;
+					} 
+					
+                }
             }
         // Quitter le programme
         else if(choix_menu == 4){
@@ -201,6 +217,6 @@ int main(){
                 exit(0);
             }
     }
-    
-return 0 ;
+ 
+return 0 ;	
 }
