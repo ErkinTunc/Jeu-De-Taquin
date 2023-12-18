@@ -17,6 +17,7 @@ int main(){
 	#endif
 	
     
+	
     // Efface de terminale
     clearScreen(os);
 
@@ -52,7 +53,7 @@ int main(){
         
         printf("Faitez vous votre choix (1 ou 2 ou 3 ou 4) :");
         int choix_menu ; 
-        scanf("%d",&choix_menu);
+        scanf("% d",&choix_menu);
 
         // Executable
         while (choix_menu != 4){
@@ -86,7 +87,10 @@ int main(){
                         "Votre choix : " );
                     
                     char lettre ; // choix lettre
-                    scanf("%c",&lettre);
+                    scanf(" %c",&lettre);
+					
+					// Consume the newline character
+					getchar();
 
                     // Retourne a la menu
                     if(lettre == 'Q'){
