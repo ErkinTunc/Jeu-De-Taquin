@@ -304,6 +304,7 @@ void AffectFichier(GameBoard *T, const char *nomFichier) {
         exit(-1);
     }
 
+	// Initialization des variables
     int lineNumber = 0;
     char line[100];
 
