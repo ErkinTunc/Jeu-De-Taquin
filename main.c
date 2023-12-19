@@ -120,11 +120,11 @@ int main(void){
 					// Efface de terminale
 					clearScreen(os);
 					
-                    printf("Choissiez vous un jeu sauvegarder \n"
+                    printf("Choissiez vous un jeu sauvegarder \n\n"
                         "1.Facile(par hazard) (4x4)    \n"
                         "2.Moyenne (5x5)   \n"
-                        "3.Difficile (6x6) \n"
-                        "Tapez 1 ou 2 ou 3 et Q pour le retoruner \n"
+                        "3.Difficile (6x6) \n \n"
+                        "Tapez 1 ou 2 ou 3 et Q pour le retoruner \n "
                         "Votre choix :");
                     
                     
@@ -147,7 +147,7 @@ int main(void){
 						choix_menu = 0 ; //Plus grand boucle (apres le boucle de jeu)
 						
 						// Condition de melange de tableau dans le partie jeu
-						jeuSauvegarde = 1;// on melange ici car dans le fichier les nombres sont ordonne
+						jeuSauvegarde = 0;// on melange ici(donc jeuSauvegarde = 0) car dans le fichier les nombres sont ordonne
                     }
                     else if(choixDifficulte == '2'){
 
