@@ -199,8 +199,8 @@ int main(void){
 					scanf("%c",&choix_taille);
 
 					// Modification de variable de boucle
-					if(choix_taille == 'Q' ){
-						choix_taille == 'Q' ;
+					if(choix_taille == 'Q' || choix_taille == 'q' ){
+						choix_taille = 'Q' ;
 						choix_menu = 0; // Plus grand boucle (après le boucle de jeu)
 					}
 					// Changement du taille de la tableau
