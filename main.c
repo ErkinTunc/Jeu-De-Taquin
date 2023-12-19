@@ -118,7 +118,7 @@ int main(void){
                 while (choixDifficulte != 'Q'){
 					
 					// Efface de terminale
-					//clearScreen(os);
+					clearScreen(os);
 					
                     printf("Choissiez vous un jeu sauvegarder \n"
                         "1.Facile(par hazard) (4x4)    \n"
@@ -139,10 +139,8 @@ int main(void){
                     else if(choixDifficulte == '1'){
 						
                         T.size = 4 ;
+						T.board = CreationTab(T.size);
                         AffectFichier(&T,"facile.txt"); // nom de fichier est "facile"
-						AfficheTab2k(T.board,T.size,T.size);
-						
-						sleep(10000000);
 						
 						//Modification de variable de boucle
 						choixDifficulte = 'Q';
@@ -154,8 +152,8 @@ int main(void){
                     else if(choixDifficulte == '2'){
 
                         T.size = 5 ;
+						T.board = CreationTab(T.size);
                         AffectFichier(&T,"moyenne.txt"); // nom de fichier est "moyenne"
-						AfficheTab2k(T.board,T.size,T.size);
 						
 						//Modification de variable de boucle
 						choixDifficulte = 'Q';
@@ -168,6 +166,7 @@ int main(void){
                     else if(choixDifficulte == '3'){
 
                         T.size = 6 ;
+						T.board = CreationTab(T.size);
                         AffectFichier(&T,"difficile.txt"); // nom de fichier est "difficile"
 						
 						//Modification de variable des boucles
@@ -210,6 +209,9 @@ int main(void){
 						T.board = CreationTab(T.size);
 						T.emptyLin = T.size - 1;
 						T.emptyCol = T.size - 1;
+						
+						// Variable globale
+						jeuSauvegarde = 0;
 					} 
 					
                 }
