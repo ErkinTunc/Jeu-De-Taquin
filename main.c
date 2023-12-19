@@ -118,7 +118,7 @@ int main(void){
                 while (choixDifficulte != 'Q'){
 					
 					// Efface de terminale
-					clearScreen(os);
+					//clearScreen(os);
 					
                     printf("Choissiez vous un jeu sauvegarder \n"
                         "1.Facile(par hazard) (4x4)    \n"
@@ -139,22 +139,23 @@ int main(void){
                     else if(choixDifficulte == '1'){
 						
                         T.size = 4 ;
-                        AffectFichier(&T,"facile"); // nom de fichier est "facile"
-						T.emptyLin = T.size -1 ;
-						T.emptyCol = T.size -1 ;
-                        Melange(&T);  // on melange ici car dans le fichier les nombres sont ordonne
+                        AffectFichier(&T,"facile.txt"); // nom de fichier est "facile"
+						AfficheTab2k(T.board,T.size,T.size);
+						
+						sleep(10000000);
 						
 						//Modification de variable de boucle
 						choixDifficulte = 'Q';
 						choix_menu = 0 ; //Plus grand boucle (apres le boucle de jeu)
 						
 						// Condition de melange de tableau dans le partie jeu
-						jeuSauvegarde = 1;
+						jeuSauvegarde = 1;// on melange ici car dans le fichier les nombres sont ordonne
                     }
                     else if(choixDifficulte == '2'){
 
                         T.size = 5 ;
                         AffectFichier(&T,"moyenne.txt"); // nom de fichier est "moyenne"
+						AfficheTab2k(T.board,T.size,T.size);
 						
 						//Modification de variable de boucle
 						choixDifficulte = 'Q';
@@ -215,6 +216,10 @@ int main(void){
             }
         // Quitter le programme
         else if(choix_menu == 4){
+				// Efface de terminale
+				clearScreen(os);
+				
+				// EXIT
                 var = 0;
                 exit(0);
             }
