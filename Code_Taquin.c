@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <string.h>
 #include<time.h>
 #include "Code_Taquin.h"
 
@@ -294,40 +295,52 @@ void mouve(char lettre, GameBoard *T){
 
 // = Les fonction de Fichier = 
 
-void AffectFichier(GameBoard *T,const char *nomFichier){
-	// Il lire un fichier ensuite faire une affectation a la tableau
-	// une fonction qui prend de valeurs sur un fichier.
-	
-	// Initialization de fichier
-	FILE *file = fopen(nomFichier,"r");
-	
-	// Verification de fichier
-	if (file == NULL){
-		perror("Probleme de fichier");
-		exit(-1);
-	}
-	
-	// Lisage de fichier
+void AffectFichier(GameBoard *T, const char *nomFichier) {
+    FILE *file = fopen(nomFichier, "r");
+
+    if (file == NULL) {
+        perror("Probleme de fichier\n");
+        exit(-1);
+    }
+
     int lineNumber = 0;
-    char line[100];  // la taille max de chaque ligne (cela peut etre modfier pour besoin) 
-    
-	while ( fgets(line, sizeof(line), file) != NULL && lineNumber < T->size) {
-        
+    char line[100];
+
+    while (fgets(line, sizeof(line), file) != NULL && lineNumber < T->size) {
+        printf("while boucle %d\n", lineNumber);
+		printf("%s",&line);
+
 		// Attributeur des valeurs d'une ligne à tableau
-        for (int j = 0; j < T->size; j++) {
-            sscanf(line, "%d", &T->board[lineNumber][j]); // il fait une scanf et une affectation a la T (en meme temps)
-			
-			// Affectation de location de caseVide
-			if(T->board[lineNumber][j] == 0){ //le cas '0' est le caseVide
-					T->emptyLin = lineNumber ;
-					T->emptyCol	= j ;
-			}
+        char *token = strtok(line, " \n"); 
+			// strtok is a function in C that is used to tokenize (split) a string into substrings based on a delimiter.
+        
+		for (int j = 0; j < T->size; j++) {
+            if (token == NULL) {
+                fprintf(stderr, "Not enough values in line %d\n", lineNumber + 1);
+                exit(-1);
+            }
+
+            int valF;
+            sscanf(token, "%d", &valF);
+
+            T->board[lineNumber][j] = valF;
+            printf("%d ", valF);
+
+            // Move to the next token in the line
+            token = strtok(NULL, " ");
+
+            // Affectation de location de caseVide
+            if (valF == 0) { // le cas '0' est le caseVide
+                T->emptyLin = lineNumber;
+                T->emptyCol = j;
+            }
         }
+        printf("\n");
         lineNumber++;
     }
-	
-	fclose(file);
+    fclose(file);
 }
+
 
 
 void EcrireFichier(GameBoard *T,const char *nomFichier){
