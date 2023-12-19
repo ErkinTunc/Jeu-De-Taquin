@@ -297,7 +297,8 @@ void mouve(char lettre, GameBoard *T){
 
 void AffectFichier(GameBoard *T, const char *nomFichier) {
     FILE *file = fopen(nomFichier, "r");
-
+	
+	// Test d'existance
     if (file == NULL) {
         perror("Probleme de fichier\n");
         exit(-1);
@@ -308,8 +309,7 @@ void AffectFichier(GameBoard *T, const char *nomFichier) {
 
     while (fgets(line, sizeof(line), file) != NULL && lineNumber < T->size) {
         printf("while boucle %d\n", lineNumber);
-		printf("%s",&line);
-
+	
 		// Attributeur des valeurs d'une ligne à tableau
         char *token = strtok(line, " \n"); 
 			// strtok is a function in C that is used to tokenize (split) a string into substrings based on a delimiter.
@@ -317,14 +317,14 @@ void AffectFichier(GameBoard *T, const char *nomFichier) {
 		for (int j = 0; j < T->size; j++) {
             if (token == NULL) {
                 fprintf(stderr, "Not enough values in line %d\n", lineNumber + 1);
-                exit(-1);
+                //exit(-1);
             }
 
             int valF;
             sscanf(token, "%d", &valF);
 
             T->board[lineNumber][j] = valF;
-            printf("%d ", valF);
+            
 
             // Move to the next token in the line
             token = strtok(NULL, " ");
