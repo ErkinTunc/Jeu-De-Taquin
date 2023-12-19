@@ -8,9 +8,9 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(FLAGS) -o $@ $(OBJECTS)
 
-Code_Taquin.o: Code_Taquin.c Code_taquin.h
+Code_Taquin.o: Code_Taquin.c Code_Taquin.h
 	$(CC) $(FLAGS) -c $<
 
-main.o: main.c Code_taquin.h
+main.o: main.c Code_Taquin.h
 	$(CC) $(FLAGS) -c $<
 
