@@ -22,15 +22,15 @@
 Le jeu de taquin consiste en un
 plateau composé de 4 lignes et 4 colonnes. Ce plateau comporte 15 pavés, une case est donc
 laissée libre. Chaque pavé est numéroté avec un nombre unique compris entre 1 et 15.
-Les pavés sont disposés sur le plateau d’un maniére désordonnée. Le but est de se ramener a la
-situation ou les nombres sont triés de maniére croissante. Seuls les pavés adjacents a la case libre
-peuvent etre placés sur cette case. Les déplacements autorisés sont le déplacement d’une case de
+Les pavés sont disposés sur le plateau d’une maniére désordonnée. Le but est de se ramener a la
+situation ou les nombres sont triés dans un ordre croissant. Seuls les pavés adjacents a la case libre
+peuvent etre placés sur cette case. Les déplacements autorisés sont les déplacements d’une case de
 maniére horizontale ou verticale.
 
 %Peut-etre on peut ajouter des images pour montrer le logique de jeu (comme le fichier de projet)
 
 \section{Localisation}
-Dans ce projet il y a 3 fichier qui contiennent de codes de jeu et une Makefile.
+Dans ce projet, il y a 4 fichiers principaux : 3 qui contiennent du codes de jeu et un fichier Makefile.
 \\
 \begin{itemize}
 	\item Code\_Taquin.c
@@ -45,21 +45,21 @@ Le fichier Taquin.c contient le code des fonctions.
 
 Le fichier Taquin.h contient le structure de jeu et les nom de fonction(pour les appeller).\\
 
-Le fichier main.c contient le code de menu(interface graphique). Dans cette fichier on utilise les codes d'autre fichier.
+Le fichier main.c contient le code de menu(interface graphique). Dans celui-ci, on utilise le code des deux autres fichiers.
 
 
 \section{Structure De Données}
 
 \subsection{GameBoard}
-Tous le jeu est contruit sur cette structure.
+La totalité du jeu est contruit à partir de la structure suivant.
 \\
 Dans cette structure il y a : \\
 
 \begin{itemize}
-	\item size (taille de tableau)
-	\item board (le pointeur qui pointe le tableau 2 dim.)
-	\item emptyLin (le location de colonne de case vide)
-	\item empyCol (le location de colonne de case vide)
+	\item size (une taille de tableau)
+	\item board (un pointeur qui pointe sur un tableau à 2 dimension.)
+	\item emptyLin (l'indice de ligne de la case vide)
+	\item empyCol (l'indice de colonne de la case vide)
 \end{itemize}
 
 \newpage
@@ -67,7 +67,7 @@ Dans cette structure il y a : \\
 \section{Les Fonctions De Jeu}
 
 \subsection{CreationTab}
-Cette fonction crée le premier table de jeu qui est comme ci-dessous.(Nous supposons que taille est 4) \\
+Cette fonction crée le premier plateau de jeu qui est comme ci-dessous.(Nous supposons que taille "size" est égale à 4) \\
 
 \begin{center}
 	T =
@@ -81,14 +81,14 @@ Cette fonction crée le premier table de jeu qui est comme ci-dessous.(Nous supp
  
 
 \subsection{AffectFichier}
-Cette fonction nous permet de continuer un jeu qui est deja sauvgardé sur le fichier. Grace a lisage d'un fichier. Avant utiliser cette fonction le taille et tableau(avec le bon taille) de structure doit créer.
+Cette fonction nous permet de continuer un jeu qui est deja sauvgardé au sein d'un fichier, grace à une lecture. Avant d'utiliser cette fonction, la taille doit être et le plateau (avec la bonne taille) doit être définie grace à la structure mentionnée précédemment.
 
 \subsection{EcrireFichier}
-Cette fonction nous permet de ecrire le contenu de tableau(jeu) a la fichier donc il nous permet de saugarder.
-Mais cette fonction n'est pas dans le code car ce n'est pas preferé utilisation par nos developpeurs.
+Cette fonction nous permet d'écrire le contenu du plateau (jeu) dans un fichier .txt, afin de le saugarder.
+Cette fonction n'est pas disponible dans le code.
 
 \subsection{mouve}
-Dans cette fonction nous avons utiliser \textit{pointeurs de fonction}. Pour cela on a crée 4 fonction.	
+Cette fonction permet le déplacement de la case vide. Nous avons décidé d'utiliser des pointeurs des \textit{pointeurs de fonction} pour cette fonction. Pour cela nous avons crée 4 fonctions.	
 
 \begin{enumerate}
 	\item X\_gauche 			
@@ -97,21 +97,21 @@ Dans cette fonction nous avons utiliser \textit{pointeurs de fonction}. Pour cel
 	\item X\_VersLeBas		
 \end{enumerate}
 
-Cette quatre fonctions nous permétont de changer le location de case vide(qui est represante par '0'). 
+Ces quatres fonctions nous permettent de changer l'indice colonne et ligne de la case vide(qui est represante par '0'). 
 	
 
 \subsection{Melange}
-Cette fonction nous permet de melange un tableau par hazard. Il utilise pointeur de structure pour premier argumant et il modifie le location de case vide aussi.
+Cette fonction nous permet de melanger un plateau. Il utilise le pointeur de structure comme premier argument et il modifie le placement de la case vide aussi.
 
 \newpage
 
 \section{Fonction Pour Affichage et Pour Tester}
 
 \subsection{AfficheTab2k}
-Cette fonction affiche le tableau 2 dimension avec un bon representation. Enplus, il affiche 'X' a place de numero 0 qui represente le case vide dans le jeu.
+Cette fonction permet d'afficher un tableau à 2 dimensions. De plus, il mets un 'X' à la place du numéro 0 dans la case vide.
 
 \subsection{clearScreen}
-Cette fonction efface les ecritures sur le terminal pour Linux et Windows systeme d'operations
+Cette fonction efface les fragements de texte d'afficher sur le terminal qui ne sont pas en lien avec le jeu du Taquin. Il fonctionne sur Linux et Windows.
 
 \section{Interface Graphique}
 Pour l'interface le jeu utilise le terminal. Il affiche ces ecritures sur le terminal et efface avec le fonction clearScreen(). Enplus le jeu utiliser touses des fonctions (sauf EcrireFichier).
