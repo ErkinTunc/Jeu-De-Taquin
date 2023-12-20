@@ -81,7 +81,7 @@ Cette fonction crée le premier plateau de jeu qui est comme ci-dessous.(Nous su
  
 
 \subsection{AffectFichier}
-Cette fonction nous permet de continuer un jeu qui est deja sauvgardé au sein d'un fichier, grace à une lecture. Avant d'utiliser cette fonction, la taille doit être et le plateau (avec la bonne taille) doit être définie grace à la structure mentionnée précédemment.
+Cette fonction nous permet de continuer un jeu qui est deja sauvgardé au sein d'un fichier, grace à une lecture. Avant d'utiliser cette fonction, la taille et le plateau (avec la bonne taille) doit être définie grace à la structure mentionnée précédemment.
 
 \subsection{EcrireFichier}
 Cette fonction nous permet d'écrire le contenu du plateau (jeu) dans un fichier .txt, afin de le saugarder.
@@ -114,12 +114,12 @@ Cette fonction permet d'afficher un tableau à 2 dimensions. De plus, il mets un
 Cette fonction efface les fragements de texte d'afficher sur le terminal qui ne sont pas en lien avec le jeu du Taquin. Il fonctionne sur Linux et Windows.
 
 \section{Interface Graphique}
-Pour l'interface le jeu utilise le terminal. Il affiche ces ecritures sur le terminal et efface avec le fonction clearScreen(). Enplus le jeu utiliser touses des fonctions (sauf EcrireFichier).
+Pour l'interface, le jeu utilise le terminal. Il affiche le texte souhaité sur le terminal et efface l'autre texte avec la fonction clearScreen(). De plus, le jeu utilise toutes les fonctions mentionnés précedemment tout au long du jeu.
 \\
-Le menu de jeu contient 4 partie :
+Le menu du jeu contient 4 partie :
 
 \subsection{Partie I : Jouer}
-En partie I le joueur joue le jeu grace aux boucles et des fonction qui sont 
+En partie I le joueur joue le jeu grace à des boucles et les fonctions suivantes:  
 
 \begin{itemize}
 	\item clearScreen()
@@ -128,14 +128,14 @@ En partie I le joueur joue le jeu grace aux boucles et des fonction qui sont
 \end{itemize}
 
 
-\subsection{Partie II : jouer a une partie sauvegardee}
-En partie II le joueur peut choissir le difficulte.
-Il y a 3 choix "facille, moyenne, difficile".
-Chaque choix represante une fichier dans le docier.
-Grace a focntion AffectFichier(). Leu jeu peut affecter les valeurs de fichier sur notre structure.
-Enplus le fonction clearScrean() est utilisé.
+\subsection{Partie II : jouer a une partie sauvegardée}
+En partie II le joueur peut choisir la difficulté.
+Il y a 3 choix possible: facile, moyenne, difficile.
+Chaque choix de difficulté représente un fichier prédéfinie dans le dossier.
+Grace à la fonction AffectFichier(), Le jeu peut affecter les valeurs des fichier sur notre structure.
+Par ailleurs, la fonction clearScrean() est utilisé.
 \\ \\
-Les équivalents fichier des choix sont ci-dessous : 
+Les fichiers correspondant aux choix sont les suivants: 
 
 \begin{itemize}
 	\item facile $\leftrightarrow$ facile.txt
@@ -145,13 +145,13 @@ Les équivalents fichier des choix sont ci-dessous :
 
 
 \subsection{Partie III : Les options}
-En partie III le joueur peut choisir le taille de tableau. L'interface lui permet de choissir le taille 4 , 5 et 6.
+En partie III le joueur peut choisir le taille du plateau. L'interface lui permet de choissir le taille 4 , 5 et 6.
 
 \subsection{Partie IV : Quitter}
-Dans cette partie le joueur peut quitter le jeu grace a un button choissi
+Dans cette partie, le joueur a la possibilté de quitter le jeu.
 
 \section{Makefile}
-Le code de makefile comme ci\-dessous nous permet de créer l'executable(Jeu\_de\_Taquin) de notre projet.
+Le code du fichier Makefile comme suivant nous permet de créer l'executable(Jeu\_de\_Taquin) de notre projet.
 TARGET represente le nom d'executable.
 \begin{lstlisting}
 CC=gcc
