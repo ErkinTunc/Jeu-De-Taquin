@@ -1,31 +1,54 @@
-# Jeu-De-Taquin
+# Jeu-De-Taquin (15-Puzzle Game)
 
-1. Structures de données et Fonctions :
-Vous devez définir les structures de données nécessaires à la réalisation du jeu.
+## Overview
+This project is a C implementation of the classic 15-puzzle game, also known as "Jeu-De-Taquin". The goal of the game is to arrange the tiles in numerical order by sliding them using the empty space.
 
-2. Affichage et Mouvement :
-Vous devez créer les fonctions nécessaires pour afficher l'état du jeu en mode texte et permettre au joueur de se déplacer en appuyant sur des touches directionnelles.
-
-3. Chargement de la Configuration Initiale depuis un Fichier :
-Votre programme doit pouvoir charger les configurations préalablement mélangées à partir d'un fichier.
-
-4. Version Généralisée :
-Votre programme doit être capable de gérer un jeu de pierres de n'importe quelle taille. Une version généralisée est nécessaire selon leurs besoins.
-
-5. Mélange Aléatoire :
-La fonction mélange doit, à partir de la configuration Tid, effectuer un certain nombre de mouvements aléatoires pour obtenir l'état du jeu, par exemple, comme dans T1.
-
-6. Fonctionnalités Optionnelles :
-Facultativement, vous pouvez utiliser la bibliothèque SDL pour donner au jeu une interface graphique. De plus, vous pouvez ajouter une méthode de résolution du problème du jeu de pierres pour aider le joueur.
-
-7. Rapport :
-Vous devez fournir un court rapport décrivant votre travail. Ce rapport devrait inclure comment les éléments du jeu (structures de données et fonctions) sont représentés et mis en œuvre, ainsi que le fonctionnement du programme.
-
-8. Makefile :
-Vous devez fournir un fichier Makefile pour la compilation automatique.
+## Directory Structure
+  Jeu-De-Taquin-main/
+  ├── .gitignore
+  ├── Code_Rapport.tex
+  ├── Code_Taquin.c
+  ├── Code_Taquin.h
+  ├── Makefile
+  ├── README.md
+  ├── difficile.txt
+  ├── facile.txt
+  ├── main.c
+  ├── moyenne.txt
 
 
+## Features
+- **Multiple Difficulty Levels**: The game includes easy, medium, and difficult levels defined in `facile.txt`, `moyenne.txt`, and `difficile.txt`.
+- **Makefile for Easy Compilation**: A Makefile is provided to simplify the compilation process.
+- **Detailed Documentation**: The `Code_Rapport.tex` file contains a detailed report on the project's implementation.
+
+## Installation
+1. Clone the repository:
+    ```sh
+    git clone <repository_url>
+    cd Jeu-De-Taquin-main
+    ```
+2. Compile the project using the provided Makefile:
+    ```sh
+    make
+    ```
+
+## Usage
+- Run the compiled program:
+    ```sh
+    ./jeu_de_taquin
+    ```
+- Follow the on-screen instructions to play the game.
+
+## File Descriptions
+- **Code_Taquin.c**: Contains the main game logic.
+- **Code_Taquin.h**: Header file with function declarations and macros.
+- **main.c**: The entry point of the program.
+- **Makefile**: Script to automate the compilation process.
+- **difficile.txt, facile.txt, moyenne.txt**: Configuration files for different difficulty levels.
+- **Code_Rapport.tex**: Detailed report about the project.
 
 
-
+## Acknowledgements
+- Thanks to the developers and contributors of this project.
 
