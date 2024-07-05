@@ -4,7 +4,7 @@
 This project is a C implementation of the classic 15-puzzle game, also known as "Jeu-De-Taquin". The goal of the game is to arrange the tiles in numerical order by sliding them using the empty space.
 
 ## Directory Structure
-  Jeu-De-Taquin-main/
+Jeu-De-Taquin-main/
   ├── .gitignore
   ├── Code_Rapport.tex
   ├── Code_Taquin.c
