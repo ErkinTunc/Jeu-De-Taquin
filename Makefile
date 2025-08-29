@@ -1,16 +1,50 @@
-CC=gcc
-FLAGS= -Wall
-OBJECTS= Code_Taquin.o main.o
-TARGET=Jeu_de_Taquin
+# ---- Compiler & Flags ----
+CC      := gcc
+CFLAGS  := -Wall -Wextra -O2 -Iinclude
+LDFLAGS :=
 
+# ---- Paths ----
+SRCDIR  := src
+INCDIR  := include
+BUILDDIR:= build
+BINDIR  := bin
+DATADIR := data
+
+# ---- App ----
+TARGET  := $(BINDIR)/Jeu_de_Taquin
+
+# ---- Sources & Objects ----
+SRC     := $(wildcard $(SRCDIR)/*.c)
+OBJ     := $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRC))
+
+# ---- Default ----
 all: $(TARGET)
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(FLAGS) -o $@ $(OBJECTS)
+# ---- Link ----
+$(TARGET): $(OBJ) | $(BINDIR)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
 
-Code_Taquin.o: Code_Taquin.c Code_Taquin.h
-	$(CC) $(FLAGS) -c $<
+# ---- Compile ----
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-main.o: main.c Code_Taquin.h
-	$(CC) $(FLAGS) -c $<
+# ---- Dirs ----
+$(BUILDDIR):
+	mkdir -p $(BUILDDIR)
 
+$(BINDIR):
+	mkdir -p $(BINDIR)
+
+# ---- Dev helpers ----
+run: $(TARGET)
+	./$(TARGET)
+
+# If your program needs to read files from data/, it will find them via relative path "data/..."
+# If you prefer to run from bin/, you can do: (cd $(BINDIR) && ./Jeu_de_Taquin)
+run-in-bin: $(TARGET)
+	cd $(BINDIR) && ./Jeu_de_Taquin
+
+clean:
+	rm -rf $(BUILDDIR) $(BINDIR)
+
+.PHONY: all run run-in-bin clean
