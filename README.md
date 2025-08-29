@@ -50,7 +50,7 @@ make
 git clone <repository_url>
 cd Jeu-De-Taquin
 make
-.in\Jeu_de_Taquin.exe
+.bin\Jeu_de_Taquin.exe
 ```
 
 > ⚠ Requires `gcc` and `make`. On Windows, install [MSYS2](https://www.msys2.org/) or MinGW.
