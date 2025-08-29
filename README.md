@@ -1,54 +1,128 @@
-# Jeu-De-Taquin (15-Puzzle Game)
+# Jeu-De-Taquin (Sliding Puzzle Game)
 
-## Overview
-This project is a C implementation of the classic 15-puzzle game, also known as "Jeu-De-Taquin". The goal of the game is to arrange the tiles in numerical order by sliding them using the empty space.
+## 📖 Overview
 
-## Directory Structure
-    Jeu-De-Taquin-main/
-    ├── .gitignore
-    ├── Code_Rapport.tex
-    ├── Code_Taquin.c
-    ├── Code_Taquin.h
-    ├── Makefile
-    ├── README.md
-    ├── difficile.txt
-    ├── facile.txt
-    ├── main.c
-    ├── moyenne.txt
+_Jeu de Taquin_ (15-puzzle) is a classic sliding tile game implemented in **C**.  
+Your goal: slide the numbered tiles into the empty space until the board is solved.
 
+✨ Features:
 
-## Features
-- **Multiple Difficulty Levels**: The game includes easy, medium, and difficult levels defined in `facile.txt`, `moyenne.txt`, and `difficile.txt`.
-- **Makefile for Easy Compilation**: A Makefile is provided to simplify the compilation process.
-- **Detailed Documentation**: The `Code_Rapport.tex` file contains a detailed report on the project's implementation.
+- Multiple board sizes (**4×4, 5×5, 6×6**)
+- Randomly shuffled puzzles
+- Load saved puzzles (`facile.txt`, `moyenne.txt`, `difficile.txt`)
+- Interactive terminal-based menu
 
-## Installation
-1. Clone the repository:
-    ```sh
-    git clone <repository_url>
-    cd Jeu-De-Taquin-main
-    ```
-2. Compile the project using the provided Makefile:
-    ```sh
-    make
-    ```
+---
 
-## Usage
-- Run the compiled program:
-    ```sh
-    ./jeu_de_taquin
-    ```
-- Follow the on-screen instructions to play the game.
+## 📂 Project Structure
 
-## File Descriptions
-- **Code_Taquin.c**: Contains the main game logic.
-- **Code_Taquin.h**: Header file with function declarations and macros.
-- **main.c**: The entry point of the program.
-- **Makefile**: Script to automate the compilation process.
-- **difficile.txt, facile.txt, moyenne.txt**: Configuration files for different difficulty levels.
-- **Code_Rapport.tex**: Detailed report about the project.
+```
+Jeu-De-Taquin/
+├── bin/                 # Compiled executable
+├── build/               # Object files
+├── data/                # Puzzle states
+│   ├── facile.txt       # Easy (4×4)
+│   ├── moyenne.txt      # Medium (5×5)
+│   └── difficile.txt    # Hard (6×6)
+├── docs/                # Documentation & report
+├── include/             # Header files
+├── src/                 # Source code
+├── Makefile             # Build automation
+└── README.md            # Project info
+```
 
+---
 
-## Acknowledgements
-- Thanks to the developers and contributors of this project.
+## 🚀 Installation & Run
 
+### 🔹 Linux / macOS
+
+```sh
+git clone <repository_url>
+cd Jeu-De-Taquin
+make
+./bin/Jeu_de_Taquin
+```
+
+### 🔹 Windows (MSYS2 / MinGW)
+
+```powershell
+git clone <repository_url>
+cd Jeu-De-Taquin
+make
+.in\Jeu_de_Taquin.exe
+```
+
+> ⚠ Requires `gcc` and `make`. On Windows, install [MSYS2](https://www.msys2.org/) or MinGW.
+
+---
+
+## 🎮 Gameplay
+
+### 🕹️ Menu
+
+```
+1. Play new game
+2. Load saved game
+3. Options (choose board size)
+4. Quit
+```
+
+### 🎛️ Controls
+
+- **G** → Left
+- **D** → Right
+- **H** → Up
+- **B** → Down
+- **Q** → Quit
+
+### 🖼️ Example Board
+
+```
+   +----+----+----+----+
+   |  1 |  5 |  X |  3 |
+   +----+----+----+----+
+   |  2 |  4 |  6 |  8 |
+   +----+----+----+----+
+   |  9 | 10 |  7 | 11 |
+   +----+----+----+----+
+   | 13 | 14 | 15 | 12 |
+   +----+----+----+----+
+```
+
+---
+
+## 🐞 Troubleshooting
+
+- **`make: command not found`**
+
+  - Ubuntu/Debian → `sudo apt install build-essential`
+  - macOS → `xcode-select --install`
+  - Windows → Install MSYS2/MinGW
+
+- **Executable won’t run**
+  - Linux/macOS → `./bin/Jeu_de_Taquin`
+  - Windows → `.in\Jeu_de_Taquin.exe`
+
+---
+
+## 🔮 Roadmap
+
+- ✅ Add victory detection & score tracking
+- ✅ Improve shuffle → always solvable puzzles
+- ⬜ Undo/redo functionality
+- ⬜ Ncurses UI for colorful display
+- ⬜ Automated solver (A\*)
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and suggestions are welcome!  
+Fork this repo, create a branch, and submit a PR.
