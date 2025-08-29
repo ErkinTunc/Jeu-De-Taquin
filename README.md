@@ -108,11 +108,11 @@ make
 
 ## 🔮 Roadmap
 
-- ✅ Add victory detection & score tracking
-- ✅ Improve shuffle → always solvable puzzles
-- ⬜ Undo/redo functionality
-- ⬜ Ncurses UI for colorful display
-- ⬜ Automated solver (A\*)
+- [x] Add victory detection & score tracking  
+- [x] Improve shuffle → always solvable puzzles  
+- [ ] Undo/redo functionality  
+- [ ] Ncurses UI for colorful display  
+- [ ] Automated solver (A*) 
 
 ---
 
