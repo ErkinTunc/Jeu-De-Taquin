@@ -102,7 +102,7 @@ make
 
 - **Executable won’t run**
   - Linux/macOS → `./bin/Jeu_de_Taquin`
-  - Windows → `.in\Jeu_de_Taquin.exe`
+  - Windows → `.bin\Jeu_de_Taquin.exe`
 
 ---
 
