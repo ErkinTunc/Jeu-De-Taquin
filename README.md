@@ -10,7 +10,7 @@ Your goal: slide the numbered tiles into the empty space until the board is solv
 - Multiple board sizes (**4×4, 5×5, 6×6**)
 - Randomly shuffled puzzles
 - Load saved puzzles (`facile.txt`, `moyenne.txt`, `difficile.txt`)
-- Interactive terminal-based menu
+- Interactive terminal interface with dynamic updates (clear screen, board rendering).
 
 ---
 
@@ -70,10 +70,10 @@ make
 
 ### 🎛️ Controls
 
-- **G** → Left
-- **D** → Right
-- **H** → Up
-- **B** → Down
+- **G** → (Gauche = Left)
+- **D** → (Droite = Right)
+- **H** → (Haut = Up)
+- **B** → (Bas = Down)
 - **Q** → Quit
 
 ### 🖼️ Example Board
