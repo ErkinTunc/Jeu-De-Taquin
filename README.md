@@ -53,7 +53,7 @@ make
 .bin\Jeu_de_Taquin.exe
 ```
 
-> ⚠ Requires `gcc` and `make`. On Windows, install [MSYS2](https://www.msys2.org/) or MinGW.
+>!!! Requires `gcc` and `make`. On Windows, install [MSYS2](https://www.msys2.org/) or MinGW.
 
 ---
 
@@ -76,7 +76,7 @@ make
 - **B** → (Bas = Down)
 - **Q** → Quit
 
-### 🖼️ Example Board
+### Example Board
 
 ```
    +----+----+----+----+
