@@ -116,12 +116,6 @@ make
 
 ---
 
-## License
-
-This project is licensed under the **MIT License**.
-
----
-
 ## Contributing
 
 Contributions, issues, and suggestions are welcome!  
