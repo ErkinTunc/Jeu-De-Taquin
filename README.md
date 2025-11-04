@@ -1,11 +1,11 @@
 # Jeu-De-Taquin (Sliding Puzzle Game)
 
-## 📖 Overview
+## Overview
 
 _Jeu de Taquin_ (15-puzzle) is a classic sliding tile game implemented in **C**.  
 Your goal: slide the numbered tiles into the empty space until the board is solved.
 
-✨ Features:
+Features:
 
 - Multiple board sizes (**4×4, 5×5, 6×6**)
 - Randomly shuffled puzzles
@@ -14,7 +14,7 @@ Your goal: slide the numbered tiles into the empty space until the board is solv
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 Jeu-De-Taquin/
@@ -33,9 +33,9 @@ Jeu-De-Taquin/
 
 ---
 
-## 🚀 Installation & Run
+## Installation & Run
 
-### 🔹 Linux / macOS
+### Linux / macOS
 
 ```sh
 git clone <repository_url>
@@ -44,7 +44,7 @@ make
 ./bin/Jeu_de_Taquin
 ```
 
-### 🔹 Windows (MSYS2 / MinGW)
+### Windows (MSYS2 / MinGW)
 
 ```powershell
 git clone <repository_url>
@@ -57,9 +57,9 @@ make
 
 ---
 
-## 🎮 Gameplay
+## Gameplay
 
-### 🕹️ Menu
+### Menu
 
 ```
 1. Play new game
@@ -68,7 +68,7 @@ make
 4. Quit
 ```
 
-### 🎛️ Controls
+### Controls
 
 - **G** → (Gauche = Left)
 - **D** → (Droite = Right)
@@ -92,7 +92,7 @@ make
 
 ---
 
-## 🐞 Troubleshooting
+## Troubleshooting
 
 - **`make: command not found`**
 
@@ -106,7 +106,7 @@ make
 
 ---
 
-## 🔮 Roadmap
+## Roadmap
 
 - [x] Add victory detection & score tracking  
 - [x] Improve shuffle → always solvable puzzles  
@@ -116,13 +116,13 @@ make
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the **MIT License**.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues, and suggestions are welcome!  
 Fork this repo, create a branch, and submit a PR.
