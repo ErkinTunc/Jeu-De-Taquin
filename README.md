@@ -18,8 +18,6 @@ Features:
 
 ```
 Jeu-De-Taquin/
-├── bin/                 # Compiled executable
-├── build/               # Object files
 ├── data/                # Puzzle states
 │   ├── facile.txt       # Easy (4×4)
 │   ├── moyenne.txt      # Medium (5×5)
